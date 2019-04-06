@@ -57,13 +57,13 @@ class ConwayGame(object):
                 if cell_alive and neighbor_count < 2:
                     alive = False
 
-                if cell_alive and neighbor_count in [2, 3]:
+                elif cell_alive and neighbor_count in [2, 3]:
                     alive = True
 
-                if cell_alive and neighbor_count > 3:
+                elif cell_alive and neighbor_count > 3:
                     alive = False
 
-                if not cell_alive and neighbor_count == 3:
+                elif not cell_alive and neighbor_count == 3:
                     alive = True
 
                 if alive:
