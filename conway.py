@@ -28,12 +28,14 @@ from time import sleep
 
 class ConwayGame(object):
 
-    def __init__(self, width, height, initial_state):
+    def __init__(self, initial_state):
+        width = len(initial_state[0])
+        height = len(initial_state)
         self.width = width
         self.width_limit = width - 1
         self.height = height
         self.height_limit = height - 1
-        self.matrix = deepcopy(initial_state)
+        self.matrix = initial_state
 
     def play(self, delay=1.0):
         self.print_matrix()
@@ -119,7 +121,7 @@ def main():
     second_generation = [[0, 0, 0], [1, 1, 1], [0, 0, 0]]
     third_generation = [[0, 1, 0], [0, 1, 0], [0, 1, 0]]
 
-    game = ConwayGame(3, 3, initial_state)
+    game = ConwayGame(initial_state)
     game.step()
     assert(game.matrix == second_generation)
     game.step()
