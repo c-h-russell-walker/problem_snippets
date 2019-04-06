@@ -50,26 +50,16 @@ class ConwayGame(object):
         matrix_copy = deepcopy(self.matrix)
         for y in range(self.height):
             for x in range(self.width):
-                cell_alive = self.matrix[x][y]
                 alive = False
                 neighbor_count = self.get_neighbor_count(x, y)
 
-                if cell_alive and neighbor_count < 2:
-                    alive = False
-
-                elif cell_alive and neighbor_count in [2, 3]:
+                if self.matrix[x][y] and neighbor_count in [2, 3]:
+                    alive = True
+                elif not self.matrix[x][y] and neighbor_count == 3:
                     alive = True
 
-                elif cell_alive and neighbor_count > 3:
-                    alive = False
+                matrix_copy[x][y] = int(alive)
 
-                elif not cell_alive and neighbor_count == 3:
-                    alive = True
-
-                if alive:
-                    matrix_copy[x][y] = 1
-                else:
-                    matrix_copy[x][y] = 0
         self.matrix = matrix_copy
 
     def get_neighbor_count(self, x, y):
