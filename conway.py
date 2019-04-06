@@ -86,12 +86,21 @@ class ConwayGame(object):
 
         return neighbor_count
 
-    def print_matrix(self):
+    def print_matrix(self, display_as_ints=False):
+        """
+        Optionally display as the integer values - helpful for debugging
+        """
+        icon_map = {
+            0: '-',
+            1: '*',
+        }
         matrix_string = '\n'.join(
             [
                 ''.join(
                     [
-                        '{:3}'.format(item)
+                        '{:3}'.format(
+                            item if display_as_ints else icon_map[item]
+                        )
                         for item in row
                     ]
                 ) for row in self.matrix
