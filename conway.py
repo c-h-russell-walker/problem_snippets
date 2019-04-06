@@ -29,8 +29,8 @@ from time import sleep
 class ConwayGame(object):
 
     def __init__(self, initial_state):
-        width = len(initial_state[0])
-        height = len(initial_state)
+        width = len(initial_state)
+        height = len(initial_state[0])
         self.width = width
         self.width_limit = width - 1
         self.height = height
@@ -113,7 +113,7 @@ class ConwayGame(object):
 def main():
     # 'Blinker'
     # TODO - Add more examples to test with
-    initial_state = [
+    blinker = [
         [0, 1, 0],
         [0, 1, 0],
         [0, 1, 0]
@@ -121,19 +121,29 @@ def main():
     second_generation = [[0, 0, 0], [1, 1, 1], [0, 0, 0]]
     third_generation = [[0, 1, 0], [0, 1, 0], [0, 1, 0]]
 
-    game = ConwayGame(initial_state)
-    game.step()
-    assert(game.matrix == second_generation)
-    game.step()
-    assert(game.matrix == third_generation)
+    test_game = ConwayGame(blinker)
+    test_game.step()
+    assert(test_game.matrix == second_generation)
+    test_game.step()
+    assert(test_game.matrix == third_generation)
 
     print('Tests passed.\n')
+
+    # 'Toad'
+    toad = [
+        [0, 0, 0, 0],
+        [0, 1, 1, 1],
+        [1, 1, 1, 0],
+        [0, 0, 0, 0],
+    ]
+
+    toad_game = ConwayGame(toad)
 
     yes_no = input('Play game on loop?\ny/n\n\nEnter `ctrl-c` to stop.\n\n')
     if yes_no.lower() == 'y':
         try:
             os.system('clear')
-            game.play()
+            toad_game.play()
         except KeyboardInterrupt:
             print('\nGame stopped.')
 
