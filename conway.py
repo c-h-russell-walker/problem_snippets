@@ -28,6 +28,14 @@ from time import sleep
 
 class ConwayGame(object):
 
+    __slots__ = [
+        'width',
+        'width_limit',
+        'height',
+        'height_limit',
+        'matrix',
+    ]
+
     def __init__(self, initial_state):
         width = len(initial_state)
         height = len(initial_state[0])
