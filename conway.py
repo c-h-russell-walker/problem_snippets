@@ -22,7 +22,6 @@ following rules:
 """
 
 import os
-from copy import deepcopy
 from time import sleep
 
 
@@ -55,7 +54,8 @@ class ConwayGame(object):
                 sleep(delay)
 
     def step(self):
-        matrix_copy = deepcopy(self.matrix)
+        # Be sure to have new instances and not references to the same lists
+        matrix_copy = [row[:] for row in self.matrix]
         for y in range(self.height):
             for x in range(self.width):
                 alive = False
