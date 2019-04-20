@@ -29,10 +29,10 @@ def sort_lists(
         min_val = min([list_one[0], list_two[0]])
         max_val = max([list_one[-1], list_two[-1]])
         for val in range(min_val, max_val + 1):
-            while val in list_one:
+            while list_one and list_one[0] == val:
                 answer.append(val)
                 del list_one[0]
-            while val in list_two:
+            while list_two and list_two[0] == val:
                 answer.append(val)
                 del list_two[0]
         return answer
